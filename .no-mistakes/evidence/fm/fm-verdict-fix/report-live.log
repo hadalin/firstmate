@@ -1,0 +1,40 @@
+
+CASE: Finished scout after metadata cleanup
+a finished scout's report always reaches MAIN, so it is recorded as captain
+recorded seq 1 [captain]; MAIN processes it from its next drain
+{"seq":1,"epoch":1792351489,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"captain","summary":"Finished scout after metadata cleanup","silent":false,"statusEndpoint":0,"statusIdent":"-"}
+
+CASE: Silent routine cannot suppress a finished scout
+a finished scout's report always reaches MAIN, so it is recorded as captain
+recorded seq 1 [captain]; MAIN processes it from its next drain
+{"seq":1,"epoch":1792351490,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"captain","summary":"Silent routine cannot suppress a finished scout","silent":false,"statusEndpoint":0,"statusIdent":"-"}
+
+CASE: Task prefix is not a finished scout match
+recorded seq 1 [routine]; it waits in the outcome store for MAIN
+{"seq":1,"epoch":1792351491,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"routine","summary":"Task prefix is not a finished scout match","silent":false,"statusEndpoint":0,"statusIdent":"-"}
+
+CASE: Unfinished task stays routine
+recorded seq 1 [routine]; it waits in the outcome store for MAIN
+{"seq":1,"epoch":1792351493,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"routine","summary":"Unfinished task stays routine","silent":false,"statusEndpoint":0,"statusIdent":"-"}
+
+CASE: Turn begun away stays routine after return
+recorded seq 1 [routine]; silent outcome remains in the outcome store
+{"seq":1,"epoch":1792351493,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"routine","summary":"Turn begun away stays routine after return","silent":true,"statusEndpoint":0,"statusIdent":"-"}
+
+CASE: Captain leaves during attended turn
+recorded seq 1 [routine]; silent outcome remains in the outcome store
+{"seq":1,"epoch":1792351495,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"routine","summary":"Captain leaves during attended turn","silent":true,"statusEndpoint":0,"statusIdent":"-"}
+
+CASE: Out-of-scope report is refused
+report refused: the wake being handled (row 1) names scout-a scout-ab, not other; report only that task, never fleet or a task from memory
+exit=3; store rows=       1
+
+CASE: Finished report is presented to MAIN after cleanup
+a finished scout's report always reaches MAIN, so it is recorded as captain
+recorded seq 1 [captain]; MAIN processes it from its next drain
+{"seq":1,"epoch":1792351497,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"captain","summary":"Finished report is presented to MAIN after cleanup","silent":false,"statusEndpoint":0,"statusIdent":"-"}
+
+MAIN drain:
+BRANCH OUTCOMES (captain outcomes the supervision session recorded for you, one line per task, oldest first; each says what was true when it was recorded, so check the task's current state first, including its still-open decisions listed above under OPEN DECISIONS, and sort them into still open and already settled, such as a decision since answered, a PR since merged, or a task since finished - process the still-open ones as firstmate: tell the captain, land or merge what is ready, answer or escalate a decision, or act on a blocker; your reply to the captain covers only those, as if the settled ones had never been listed, and a settled one needs only the acknowledgement):
+[seq 1, recorded 0m ago] scout-a: Finished report is presented to MAIN after cleanup
+BRANCH OUTCOMES: after processing them run bin/fm-branch-outcome.sh mark-processed --through 1; until then every drain presents them again

@@ -1,0 +1,7 @@
+
+CASE: Finished scout after metadata cleanup
+recorded seq 1 [routine]; it waits in the outcome store for MAIN
+{"seq":1,"epoch":1792351632,"task":"scout-a","wake":"signal: scout-a.status done: report ready","verdict":"routine","summary":"Finished scout after metadata cleanup","silent":false,"statusEndpoint":0,"statusIdent":"-"}
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+AssertionError: {'seq': 1, 'epoch': 1792351632, 'task': 'scout-a', 'wake': 'signal: scout-a.status done: report ready', 'verdict': 'routine', 'summary': 'Finished scout after metadata cleanup', 'silent': False, 'statusEndpoint': 0, 'statusIdent': '-'}

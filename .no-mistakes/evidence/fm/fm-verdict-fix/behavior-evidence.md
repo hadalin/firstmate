@@ -1,0 +1,9 @@
+Behavior validation
+
+The real fm-branch-report.sh command was exercised against a disposable marked lab home and seeded turn records. No engine or primary was substituted for these direct command checks. report-live.log contains the actual persisted JSON outcomes and MAIN's actual fm-wake-drain.sh presentation. It demonstrates promotion with absent task metadata, silent-report promotion, exact task matching, unfinished-task behavior, away-posture boundaries, and scope refusal.
+
+The host, Claude Stop hook, and Cursor stop-hook suites use simulated harness/engine processes. Their results are automated behavioral regression evidence, not live primary evidence. The added host regression captures a done scout before the simulated branch removes its metadata and status. The added hook regressions deliver an actionable close after the simulated host empties the fleet.
+
+Counterfactual checks ran the focused regressions against the base implementation in an isolated source overlay. baseline-report.log shows a routine persisted outcome instead of captain. baseline-host.log shows a routine outcome and no notification. baseline-claude.log shows exit 0 instead of 2. baseline-cursor.log shows an empty follow-up instead of the actionable close. These failures are expected reproductions of the bugs; the target checks pass.
+
+Real-primary limitation: tmux and cursor-agent are absent from PATH. A named Herdr lab was prepared/provisioned and subsequently torn down through the helper. Its server did not remain running after the provisioning command returned. A second attempt with all Herdr configuration isolated under the worktree was refused because its required default-session tripwire was absent. The runbook forbids creating or touching the default session. No real Claude or Cursor primary was driven; the previously declined live-primary evidence limitation remains accepted, without a new finding.

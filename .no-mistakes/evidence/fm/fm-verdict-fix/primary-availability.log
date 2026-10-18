@@ -1,1 +1,6 @@
-fm-herdr-lab: fleet-state tripwire requires exactly one running default session
+claude on PATH: /Users/primoz/.local/bin/claude
+tmux on PATH: None
+cursor-agent on PATH: None
+workspace socket bind succeeded
+Herdr named lab prepare/provision attempted; status subsequently reported not_running; guarded teardown completed.
+No real Claude primary or Cursor primary was driven. Workspace-isolated Herdr prepare was refused: fleet-state tripwire requires exactly one running default session. The runbook forbids creating or touching the default session. tmux and cursor-agent are absent from PATH; libevent is unavailable via pkg-config. The previously declined real-primary evidence limitation remains unresolved.
