@@ -26,7 +26,10 @@
 # everything else is printed in one write when the host exits: the close as
 # the arm printed it (without that status line), then any "supervision-host:"
 # lines. A "supervision-host:" line is a wake in its own right (the park
-# boundary prints nothing else); "supervision-host stood down: ..." means this
+# boundary prints nothing else). An actionable host close remains deliverable
+# even if the engine turn's cleanup emptied the fleet and supervision is no
+# longer needed; the arm owner must not discard it on a post-cycle need check.
+# "supervision-host stood down: ..." means this
 # session or generation no longer owns supervision and the owner stands down
 # silently; an exit status above 128, or no output at all, means the host
 # itself died and the owner retries it. Any other close is judged exactly as

@@ -76,8 +76,10 @@
 #     retried instead of being judged by the healthy-watcher predicate
 #     (docs/supervision-host.md). On a home that opted out nothing below
 #     changes.
-#   - Translation: while supervision is still needed and AFK remains inactive,
-#     an actionable arm close (signal:/stale:/check:/heartbeat) prints one
+#   - Translation: while AFK remains inactive, an actionable plain arm close
+#     (signal:/stale:/check:/heartbeat) requires supervision still to be needed;
+#     host closes follow bin/fm-supervision-host.sh's OUTPUT contract instead.
+#     A deliverable close prints one
 #     rewake banner to stderr and exits 2, which wakes Claude even while idle
 #     ("Stop hook feedback"). The irrevocable commit point is the EXIT STATUS:
 #     the harness delivers the collected stderr only on exit 2, so an owned
