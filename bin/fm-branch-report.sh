@@ -19,7 +19,11 @@
 #       --summary <text> [--silent true|false] [--wake <text>]
 #
 # The verdict criteria are owned by bin/fm-branch-prompt.sh ("Verdict: routine
-# or captain"); --silent true is legal only for a routine outcome.
+# or captain"); --silent true is legal only for a routine outcome. Attended,
+# a routine report for a task the turn record lists under finished_scouts (a
+# scout whose last status was done when the turn began) is recorded as a
+# visible captain outcome, because a routine one never wakes MAIN and the
+# captain requested that scout's report.
 # --wake defaults to the wake reason the host recorded for the turn.
 #
 # Only the branch actor of a live host turn may report: FM_SUPERVISION_ACTOR
@@ -116,6 +120,16 @@ if [ "$(turn_field unscoped)" != 1 ]; then
 fi
 
 [ "$WAKE_SET" -eq 1 ] || WAKE=$(turn_field wake)
+
+if [ "$VERDICT" = routine ] && [ "$(turn_field posture)" = attended ] \
+  && ! fm_afk_contract_away_present "$STATE"; then
+  case " $(turn_field finished_scouts) " in
+    *" $TASK "*)
+      VERDICT=captain SILENT=false
+      echo "a finished scout's report always reaches MAIN, so it is recorded as captain" >&2
+      ;;
+  esac
+fi
 
 set -- append --task "$TASK" --verdict "$VERDICT" --summary "$SUMMARY" --silent "$SILENT"
 [ -z "$WAKE" ] || set -- "$@" --wake "$WAKE"
