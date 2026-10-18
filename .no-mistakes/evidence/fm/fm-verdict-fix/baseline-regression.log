@@ -1,0 +1,10 @@
+$ bash bin/.phase-base-report.sh --task scout-a --verdict routine --summary "Finished review; MAIN should start the next round"
+recorded seq 6 [routine]; it waits in the outcome store for MAIN
+{"seq": 6, "epoch": 1792333030, "task": "scout-a", "wake": "", "verdict": "routine", "summary": "Finished review; MAIN should start the next round", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ bash bin/fm-branch-report.sh --task scout-a --verdict routine --summary "Finished review; MAIN should start the next round"
+recorded seq 7 [captain]; MAIN processes it from its next drain
+a finished scout's report always reaches MAIN, so it is recorded as captain
+{"seq": 7, "epoch": 1792333030, "task": "scout-a", "wake": "", "verdict": "captain", "summary": "Finished review; MAIN should start the next round", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ report after captain leaves mid-turn
+recorded seq 8 [routine]; it waits in the outcome store for MAIN
+{"seq": 8, "epoch": 1792333031, "task": "scout-a", "wake": "", "verdict": "routine", "summary": "captain left mid-turn", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}

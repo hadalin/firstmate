@@ -1,0 +1,26 @@
+$ bin/fm-branch-report.sh --task scout-a --verdict routine --summary Completed scout reported routine --silent false
+recorded seq 1 [captain]; MAIN processes it from its next drain
+a finished scout's report always reaches MAIN, so it is recorded as captain
+{"seq": 1, "epoch": 1792332916, "task": "scout-a", "wake": "signal: scout-a.status", "verdict": "captain", "summary": "Completed scout reported routine", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task scout-a --verdict routine --summary Completed scout attempts a silent routine report after cleanup --silent true
+recorded seq 2 [captain]; MAIN processes it from its next drain
+a finished scout's report always reaches MAIN, so it is recorded as captain
+{"seq": 2, "epoch": 1792332916, "task": "scout-a", "wake": "signal: scout-a.status", "verdict": "captain", "summary": "Completed scout attempts a silent routine report after cleanup", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task scout-b --verdict routine --summary Unfinished scout stays routine --silent false
+recorded seq 3 [routine]; it waits in the outcome store for MAIN
+{"seq": 3, "epoch": 1792332916, "task": "scout-b", "wake": "signal: scout-a.status", "verdict": "routine", "summary": "Unfinished scout stays routine", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task scout --verdict routine --summary Task prefix does not match finished scout --silent false
+recorded seq 4 [routine]; it waits in the outcome store for MAIN
+{"seq": 4, "epoch": 1792332916, "task": "scout", "wake": "signal: scout-a.status", "verdict": "routine", "summary": "Task prefix does not match finished scout", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task scout-a --verdict routine --summary Away scout stays routine --silent false
+recorded seq 5 [routine]; the captain has returned, so it is queued for MAIN to relay
+{"seq": 5, "epoch": 1792332917, "task": "scout-a", "wake": "signal: scout-a.status", "verdict": "routine", "summary": "Away scout stays routine", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ report completed scout outside granted scope
+report refused: the wake being handled (row 1) names scout-b, not scout-a; report only that task, never fleet or a task from memory
+Persisted receipts:
+live-test	1	captain	scout-a
+live-test	2	captain	scout-a
+live-test	3	routine	scout-b
+live-test	4	routine	scout
+live-test	5	routine	scout-a
+
