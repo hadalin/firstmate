@@ -472,8 +472,9 @@ while [ "$attempt" -lt "$AUTOARM_ATTEMPTS" ]; do
 done
 
 # The need may have vanished mid-cycle (fleet torn down, X opted out): nothing
-# left to supervise, so close quietly instead of waking the model.
-if ! need_supervision; then
+# left to supervise, so close quietly instead of waking the model. An actionable
+# host close still carries what the turn that emptied the fleet left for main.
+if { [ "$HOST_MODE" -eq 0 ] || [ "$ACTIONABLE" -eq 0 ]; } && ! need_supervision; then
   autoarm_record clean
   [ -z "$OUT" ] || rm -f "$OUT" 2>/dev/null || true
   exit 0
