@@ -62,7 +62,7 @@ Until they land, their current behavior stays as described in their own owners.
 
 On a home that runs the host, each primary's existing arm owner runs it in place of its watcher command.
 The arm owner delivers a handed-back wake through the wake path that harness already trusts.
-The host's header owns the output contract they read.
+The [host header's OUTPUT contract](../bin/fm-supervision-host.sh) owns close delivery, including after a turn empties the fleet.
 
 | Primary | Arm owner | A handed-back wake reaches main as |
 |---|---|---|
@@ -412,9 +412,9 @@ Each arm owner's own suite covers its host mode against a stub host.
 
 | Test | What it covers |
 |---|---|
-| `tests/fm-supervision-host.test.sh` | Drives the real host, auto-arm, grant, drain, report, and lease scripts against a stub engine, in both postures, including the shared offer rule and the drain's `BRANCH OUTCOMES` section. |
-| `tests/fm-claude-stop-autoarm.test.sh` | The Claude arm owner's host mode against a stub host. |
-| `tests/fm-cursor-primary.test.sh` | The Cursor arm owner's host mode against a stub host. |
+| `tests/fm-supervision-host.test.sh` | Drives the real host, auto-arm, grant, drain, report, and lease scripts against a stub engine, in both postures, including the shared offer rule, the drain's `BRANCH OUTCOMES` section, and finished-scout promotion after cleanup removes its records. |
+| `tests/fm-claude-stop-autoarm.test.sh` | The Claude arm owner's host mode against a stub host, including delivery of a branch outcome after the host turn empties the fleet. |
+| `tests/fm-cursor-primary.test.sh` | The Cursor arm owner's host mode against a stub host, including delivery of a branch outcome after the host turn empties the fleet. |
 | `tests/fm-pi-watch-extension.test.sh` | The OpenCode plugin's host mode against a stub host. |
 | `tests/fm-omp-harness.test.sh` | The omp arm owner's host mode against a stub host. |
 | `tests/fm-watch-checkpoint.test.sh` | The Codex checkpoint's host mode against a stub host. |
