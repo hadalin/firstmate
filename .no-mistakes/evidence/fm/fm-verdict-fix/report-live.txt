@@ -1,0 +1,37 @@
+$ bin/fm-lab-home.sh create /Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q/.test-verdict-home
+/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q/.test-verdict-home
+exit=0
+$ bin/fm-branch-report.sh --task scout --verdict routine --summary Finished report survives removal of scout records --silent true
+a finished scout's report always reaches MAIN, so it is recorded as captain
+recorded seq 1 [captain]; MAIN processes it from its next drain
+exit=0
+Stored outcome: {"seq": 1, "epoch": 1792749643, "task": "scout", "wake": "signal: scout.status done", "verdict": "captain", "summary": "Finished report survives removal of scout records", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task scout --verdict routine --summary Unfinished scout routine update --silent true
+recorded seq 2 [routine]; silent outcome remains in the outcome store
+exit=0
+Stored outcome: {"seq": 2, "epoch": 1792749643, "task": "scout", "wake": "signal: scout.status done", "verdict": "routine", "summary": "Unfinished scout routine update", "silent": true, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task scout --verdict routine --summary Away-started turn remains routine --silent true
+recorded seq 3 [routine]; silent outcome remains in the outcome store
+exit=0
+Stored outcome: {"seq": 3, "epoch": 1792749643, "task": "scout", "wake": "signal: scout.status done", "verdict": "routine", "summary": "Away-started turn remains routine", "silent": true, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-afk-contract.sh enter --words disposable validation away mode
+Away posture recorded at 2026-10-23T10:00:43Z: hold-for-return only. No phone channel is configured; anything that needs you waits for your return. Your away instructions are recorded verbatim; the away session will carry them out where it can, and anything it is unsure of, or that needs you, waits for your return. Destructive, irreversible, and security-sensitive actions are never pre-authorizable, whatever the words say. Expected return: not given. Spend cap: 4 concurrent workers.
+Away posture (recorded):
+  entered: 2026-10-23T10:00:43Z
+  expected return: not given
+  spend cap: 4 concurrent workers
+  reach: hold-for-return only. No phone channel is configured; anything that needs you waits for your return.
+  your words (verbatim):
+    disposable validation away mode
+exit=0
+$ bin/fm-branch-report.sh --task scout --verdict routine --summary Captain went away during this attended turn --silent true
+recorded seq 4 [routine]; silent outcome remains in the outcome store
+exit=0
+Stored outcome: {"seq": 4, "epoch": 1792749644, "task": "scout", "wake": "signal: scout.status done", "verdict": "routine", "summary": "Captain went away during this attended turn", "silent": true, "statusEndpoint": 0, "statusIdent": "-"}
+$ bin/fm-branch-report.sh --task other --verdict routine --summary out of scope
+report refused: the wake being handled (row 1) names scout, not other; report only that task, never fleet or a task from memory
+exit=3
+$ bin/fm-branch-report.sh --task scout --verdict routine --summary stale turn
+report refused: the wake this shell was handling is over; report only while handling a wake
+exit=3
+All live CLI assertions passed.

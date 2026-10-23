@@ -1,0 +1,26 @@
+/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q/.test-primary-home
+{"id":"cli:workspace:create","result":{"root_pane":{"agent_status":"unknown","cwd":"/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q","focused":true,"foreground_cwd":"/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q","pane_id":"w1:p1","revision":0,"scroll":{"max_offset_from_bottom":0,"offset_from_bottom":0,"viewport_rows":40},"tab_id":"w1:t1","terminal_id":"term_65e7f11e52d561","workspace_id":"w1"},"tab":{"agent_status":"unknown","focused":true,"label":"1","number":1,"pane_count":1,"tab_id":"w1:t1","workspace_id":"w1"},"type":"workspace_created","workspace":{"active_tab_id":"w1:t1","agent_status":"unknown","focused":true,"label":"verdict-live","number":1,"pane_count":1,"tab_count":1,"workspace_id":"w1"}}}
+{"id":"cli:pane:list","result":{"panes":[{"agent_status":"unknown","cwd":"/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q","focused":true,"foreground_cwd":"/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q","pane_id":"w1:p1","revision":0,"scroll":{"max_offset_from_bottom":0,"offset_from_bottom":0,"viewport_rows":40},"tab_id":"w1:t1","terminal_id":"term_65e7f11e52d561","workspace_id":"w1"}],"type":"pane_list"}}
+env -u NO_MISTAKES_GATE -u FM_GATE_REFUSE_BYPASS -u FM_ROOT_OVERRIDE -u FM_STATE_OVERRIDE -u FM_DATA_OVERRIDE -u FM_CON
+FIG_OVERRIDE -u FM_PROJECTS_OVERRIDE FM_HOME='/Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527
+S3Q/.test-primary-home' claude
+➜  01M5M31SA0Z85QJ919A5527S3Q env -u NO_MISTAKES_GATE -u FM_GATE_REFUSE_BYPASS -u FM_ROOT_OVERRIDE -u FM_STATE_OVERRIDE
+ -u FM_DATA_OVERRIDE -u FM_CONFIG_OVERRIDE -u FM_PROJECTS_OVERRIDE FM_HOME='/Users/primoz/.no-mistakes/worktrees/d9b6cf
+bbaf38/01M5M31SA0Z85QJ919A5527S3Q/.test-primary-home' claude
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Accessing workspace:
+
+ /Users/primoz/.no-mistakes/worktrees/d9b6cfbbaf38/01M5M31SA0Z85QJ919A5527S3Q
+
+ Quick safety check: Is this a project you created or one you trust? (Like your own code, a well-known open source
+ project, or work from your team). If not, take a moment to review what's in this folder first.
+
+ Claude Code'll be able to read, edit, and execute files here.
+
+ Security guide
+
+ ❯ No, exit
+   Yes, I trust this folder
+
+ Enter to confirm · Esc to cancel
