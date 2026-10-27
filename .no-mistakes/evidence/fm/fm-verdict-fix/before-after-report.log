@@ -1,0 +1,5 @@
+base: recorded seq 1 [routine]; it waits in the outcome store for MAIN
+persisted: {"seq": 1, "epoch": 1793108815, "task": "scout", "wake": "signal: scout.status", "verdict": "routine", "summary": "Finished investigation after cleanup", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+target: recorded seq 1 [captain]; MAIN processes it from its next drain
+a finished scout's report always reaches MAIN, so it is recorded as captain
+persisted: {"seq": 1, "epoch": 1793108815, "task": "scout", "wake": "signal: scout.status", "verdict": "captain", "summary": "Finished investigation after cleanup", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}

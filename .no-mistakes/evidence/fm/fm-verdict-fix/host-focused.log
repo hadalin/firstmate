@@ -1,4 +1,4 @@
 ok - report surface: only the branch actor's current turn may report, and only on the tasks its wake names
-ok - host: attended, a finished scout's report reaches main as captain even when the branch reports it routine
 ok - host: an attended wake the branch may take is handled on the engine, and its routine outcome never wakes main
+ok - host: attended, a finished scout's report reaches main as captain even when the branch reports it routine
 ok - host: a captain outcome recorded after the captain left waits for the return, then reaches main's drain
