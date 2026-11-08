@@ -1,0 +1,4 @@
+cursor-agent: unavailable on PATH
+System tmux: unavailable on PATH
+Fallback: built tmux 3.5a and libevent 2.1.12 inside the disposable worktree; private-socket launch rejected with File name too long.
+Herdr fallback: guarded prepare refused because exactly one running default session was unavailable. No real fleet session was changed.

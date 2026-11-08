@@ -1,0 +1,42 @@
+CASE finished: posture=attended, cleanup=True, away-now=False
+exit=0
+recorded seq 1 [captain]; MAIN processes it from its next drain
+a finished scout's report always reaches MAIN, so it is recorded as captain
+
+persisted: {"seq": 1, "epoch": 1794137896, "task": "finished", "wake": "signal: finished.status", "verdict": "captain", "summary": "finished: report ready", "silent": false, "statusEndpoint": 0, "statusIdent": "-"}
+CASE ordinary: posture=attended, cleanup=False, away-now=False
+exit=0
+recorded seq 2 [routine]; silent outcome remains in the outcome store
+
+persisted: {"seq": 2, "epoch": 1794137896, "task": "ordinary", "wake": "signal: ordinary.status", "verdict": "routine", "summary": "ordinary: report ready", "silent": true, "statusEndpoint": 19, "statusIdent": "strong:16777231:335654400:1794137896.775168577"}
+CASE away: posture=away, cleanup=False, away-now=False
+exit=0
+recorded seq 3 [routine]; silent outcome remains in the outcome store
+
+persisted: {"seq": 3, "epoch": 1794137897, "task": "away", "wake": "signal: away.status", "verdict": "routine", "summary": "away: report ready", "silent": true, "statusEndpoint": 19, "statusIdent": "strong:16777231:335654572:1794137897.048712946"}
+away-entry: 0 Away posture recorded at 2026-11-08T11:38:17Z: hold-for-return only. No phone channel is configured; anything that needs you waits for your return. Your away instructions are recorded verbatim; the away session will carry them out where it can, and anything it is unsure of, or that needs you, waits for your return. Destructive, irreversible, and security-sensitive actions are never pre-authorizable, whatever the words say. Expected return: not given. Spend cap: 4 concurrent workers.
+Away posture (recorded):
+  entered: 2026-11-08T11:38:17Z
+  expected return: not given
+  spend cap: 4 concurrent workers
+  reach: hold-for-return only. No phone channel is configured; anything that needs you waits for your return.
+  your words (verbatim):
+    Disposable validation away posture
+ 
+CASE leave: posture=attended, cleanup=False, away-now=True
+exit=0
+recorded seq 4 [routine]; silent outcome remains in the outcome store
+
+persisted: {"seq": 4, "epoch": 1794137897, "task": "leave", "wake": "signal: leave.status", "verdict": "routine", "summary": "leave: report ready", "silent": true, "statusEndpoint": 19, "statusIdent": "strong:16777231:335654785:1794137897.322052148"}
+MAIN drain exit= 0 
+ BRANCH OUTCOMES (captain outcomes the supervision session recorded for you, one line per task, oldest first; each says what was true when it was recorded, so check the task's current state first, including its still-open decisions listed above under OPEN DECISIONS, and sort them into still open and already settled, such as a decision since answered, a PR since merged, or a task since finished - process the still-open ones as firstmate: tell the captain, land or merge what is ready, answer or escalate a decision, or act on a blocker; your reply to the captain covers only those, as if the settled ones had never been listed, and a settled one needs only the acknowledgement):
+[seq 1, recorded 0m ago] finished: finished: report ready
+BRANCH OUTCOMES: after processing them run bin/fm-branch-outcome.sh mark-processed --through 1; until then every drain presents them again
+ ●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+●  WATCHER DOWN - SUPERVISION IS OFF
+●  3 task(s) in flight, but no watcher has a fresh beacon (last beat: never, grace 300s).
+●  Trust the emitted supervision protocol for this harness; do not use shell & for watcher repair.
+●  This is a supervision warning only; the guarded operation WILL still run.
+●  repair missing watcher supervision with a foreground checkpoint: bin/fm-watch-checkpoint.sh --seconds 180.
+●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+

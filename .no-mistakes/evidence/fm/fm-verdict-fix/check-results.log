@@ -1,0 +1,7 @@
+bash tests/fm-claude-stop-autoarm.test.sh: exit 0
+bash tests/fm-cursor-primary.test.sh: exit 0
+bash tests/fm-supervision-host.test.sh: exit 0; FM_TEST_COMPLETE
+python3 report-proof.py: exit 0 after correcting synthetic away-record setup
+Herdr lab prepare: refused; required default-session tripwire unavailable
+Built workspace-local tmux successfully; isolated primary launch: exit 1, socket path too long
+Disposable build and lab directories removed; git status --short empty

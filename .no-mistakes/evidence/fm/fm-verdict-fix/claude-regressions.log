@@ -8,6 +8,9 @@ ok - auto-arm: resolves the outermost pid of a nested contiguous claude ancestry
 ok - auto-arm: inert with nothing in flight and no X-mode need
 ok - auto-arm: actionable close translates to exactly one exit-2 rewake with reason
 ok - auto-arm: actionable close survives a healthy successor without duplicate delivery
+ok - auto-arm: StopFailure rewakes are paced to one per cooldown and never dropped
+ok - auto-arm: StopFailure failure continuations are paced by the same cooldown
+ok - auto-arm: a paced StopFailure rewake stands down when AFK or a lost need appears during its wait
 ok - auto-arm: an attached cycle's end starts a handling successor named after the closed arm before the rewake
 ok - auto-arm: an unconfirmed handling successor is reported in the rewake instead of blocking it
 ok - auto-arm: bounded failure verification emits one automatic-mechanism alarm
@@ -22,6 +25,11 @@ ok - auto-arm: X-mode poll need arms the cycle even with no tasks in flight
 ok - auto-arm: a registered custom check arms the cycle even with no tasks in flight
 ok - auto-arm: concurrent firings admit one owner and one rewake translation
 ok - auto-arm: TERM mid-arm commits a durable failure and exits 2 for rewake
+ok - auto-arm: HUP, TERM and INT episodes do not consume the replacement session's notice
+ok - auto-arm: a new session id retires an interrupted episode despite process identity reuse
+ok - auto-arm: verified same-session lock moves preserve the interrupted episode
+ok - auto-arm: HUP, TERM and INT after lock loss close silently as session-ended
+ok - auto-arm: all interruption signals preserve verified re-anchors and reject replacement session ids
 ok - auto-arm: an abandoned owner claim is reclaimed so a lapsed cycle re-arms
 ok - auto-arm: an abandoned-claim reclaim reaps a dead steal mutex without nesting
 ok - auto-arm: a legacy owner still arming is never reclaimed while its watcher keeps beating
@@ -55,6 +63,7 @@ ok - auto-arm: without the host the rewake banner is unchanged, eight wake lines
 ok - auto-arm: a host handback delivers every host line, while its wake lines keep their cap
 ok - auto-arm: a host that stood down closes silently without a retry
 ok - auto-arm: a host branch outcome rewakes main even when its turn emptied the fleet
+ok - auto-arm: a paced host outcome still honors AFK after waiting
 ok - auto-arm: a host rewake refused on an acknowledged marker opens no failure episode
 ok - auto-arm: a lost host hand-back notifies once per failure episode
 ok - auto-arm: a lost host hand-back on an announced marker notifies once per failure episode

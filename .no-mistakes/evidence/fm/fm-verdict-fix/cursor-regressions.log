@@ -23,6 +23,8 @@ ok - cursor park: parks when PI_CODING_AGENT leaks alongside Cursor identity
 ok - cursor park: an away-mode transition wins before follow-up commit
 ok - cursor park: inert when this session does not hold the home lock
 ok - cursor park: session takeover stops polling without output or state mutation
+ok - cursor park: a Windows-tagged session lock is owned by its session and reclaimed from a dead holder
+ok - cursor park: a live, malformed, or off-Windows tagged lock is left alone
 warning: re-init: ignored --initial-branch=main
 ok - cursor park: inert inside a child crewmate worktree
 ok - cursor park: malformed payloads fail open without arming
